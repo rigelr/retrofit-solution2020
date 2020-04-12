@@ -70,4 +70,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void handleRegisterClick(View view) {
+        Intent i = new Intent(this,RegisterActivity.class);
+        startActivity(i);
+    }
 }

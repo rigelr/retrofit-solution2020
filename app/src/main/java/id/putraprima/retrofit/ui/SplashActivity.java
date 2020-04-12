@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import id.putraprima.retrofit.R;
 import id.putraprima.retrofit.api.helper.ServiceGenerator;
@@ -34,6 +38,8 @@ public class SplashActivity extends AppCompatActivity {
         setAppInfo();
         if (checkInternetConnection()) {
             checkAppVersion();
+        }else{
+
         }
     }
 
@@ -93,8 +99,12 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AppVersion> call, Throwable t) {
-                Toast.makeText(SplashActivity.this, "Gagal Koneksi Ke Server", Toast.LENGTH_SHORT).show();
+
                 //Todo : 4. Implementasikan Cara Notifikasi Ke user jika terjadi kegagalan koneksi ke server silahkan googling cara yang lain selain menggunakan TOAST
+                Snackbar.make(findViewById(R.id.splashScreen), "CHECK YOUR CONNECTION",Snackbar.LENGTH_SHORT)
+                        .setActionTextColor(Color.MAGENTA)
+                        .setDuration(5000)
+                        .show();
             }
         });
     }
