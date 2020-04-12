@@ -12,7 +12,7 @@ import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface ApiInterface{
+public interface  ApiInterface{
     @GET("/")
     Call<AppVersion> getAppVersion();
 
